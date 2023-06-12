@@ -1,0 +1,206 @@
+/*
+ ╭━━━━╮    ╭╮   ╭━━╮          ╭╮ ╭━━━╮╭╮    ╭╮
+ ┃╭╮╭╮┃    ┃┃   ┃╭╮┃          ┃┃ ┃╭━╮┣╯╰╮   ┃┃
+ ╰╯┃┃┣┻━┳━━┫┃╭╮ ┃╰╯╰┳━━┳━━┳━┳━╯┃ ┃╰━━╋╮╭╋╮ ╭┫┃╭━━┳━━╮
+   ┃┃┃╭╮┃━━┫╰╯╯ ┃╭━╮┃╭╮┃╭╮┃╭┫╭╮┃ ╰━━╮┃┃┃┃┃ ┃┃┃┃┃━┫━━┫
+   ┃┃┃╭╮┣━━┃╭╮╮ ┃╰━╯┃╰╯┃╭╮┃┃┃╰╯┃ ┃╰━╯┃┃╰┫╰━╯┃╰┫┃━╋━━┃
+   ╰╯╰╯╰┻━━┻╯╰╯ ╰━━━┻━━┻╯╰┻╯╰━━╯ ╰━━━╯╰━┻━╮╭┻━┻━━┻━━╯
+                                        ╭━╯┃
+                                        ╰━━╯
+*/
+
+/* ============= General style ============= */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+  
+body {
+  font-family: sans-serif;
+  background-color: rgb(1, 158, 158);
+}
+/* ========================================= */
+
+/* ============= Head style ============= */ 
+.head {
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(248, 243, 237);
+  background-color: rgb(0, 139, 139);
+}
+/* ========================================= */
+
+/* ============= Table style ============= */ 
+.main-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+}
+/* ========================================= */
+
+/* ============= Tack style ============= */ 
+.tack {
+  margin: 1rem;
+  max-width: 400px;
+  max-height: 750px;
+  overflow: auto;
+  border-radius: 10px;
+  background-color: rgb(220, 220, 220);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  animation: slide-up 0.5s ease-in-out;
+}
+  
+.tack:hover {
+  transform: scale(1.05);
+}
+  
+.task-title {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin: 1rem;
+  font-weight: 700;
+}
+  
+.task-item {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: rgb(245, 245, 245);
+  font-size: 1rem;
+}
+  
+.task-status {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+  
+.task-status-item {
+  margin: 14px;
+  display: flex;
+  align-items: center;
+}
+  
+.task-status-item img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 5px;
+}
+  
+.task-status-item-dev {
+  margin-left: auto;
+}
+/* ========================================= */
+  
+/* ============= Tack scrollbar style ============= */ 
+.tack::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+  
+.tack::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+  
+.tack::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+  
+.tack::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* ========================================= */
+
+/* ============= Media queries ============= */ 
+@media screen and (max-width: 1200px) {
+  .tack {
+  width: calc(50% - 2rem);
+  margin-bottom: 1rem;
+  }
+}
+  
+@media screen and (max-width: 800px) {
+  .main-table {
+  flex-direction: column;
+  align-items: center;
+  }
+  
+  .tack {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .task-item {
+    font-size: 0.9rem;
+    margin: 0.5rem;
+    padding: 0.3rem;
+  }
+  
+  .task-status-item {
+    margin: 7px;
+  }
+  
+  .task-status-item img {
+    width: 15px;
+    height: 15px;
+    margin-right: 2px;
+  }
+  
+  .task-status-item-dev img {
+    width: 40px;
+    height: 40px;
+  }
+}
+  
+@media screen and (max-width: 600px) {
+  .tack {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .task-title {
+    font-size: 1.2rem;
+  }
+  
+  .task-item {
+    font-size: 0.8rem;
+    margin: 0.3rem;
+    padding: 0.3rem;
+  }
+  
+  .task-status-item {
+    margin: 5px;
+  }
+  
+  .task-status-item img {
+    width: 13px;
+    height: 13px;
+    margin-right: 1px;
+  }
+  
+  .task-status-item-dev img {
+    width: 30
+  }
+}
+/* ========================================= */
+
+/* ============= Sequence of style changes ============= */ 
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* ========================================= */
